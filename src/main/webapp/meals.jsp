@@ -9,7 +9,7 @@
             color: green;
         }
 
-        .exceeded {
+        .excees {
             color: red;
         }
     </style>
@@ -19,15 +19,17 @@
 <hr>
 <h2>Meals</h2>
 <table border="1" cellspacing="1" cellpadding="1">
-    <tr> <th>Date</th>
-    <th>Description</th>
-    <th>Calories</th>
+    <tr>
+        <th>Date</th>
+        <th>Description</th>
+        <th>Calories</th>
     </tr>
     <c:forEach items="${meals}" var="um">
-        <tr>
-            <td>
-              ${um.dateTime}
-            </td>
+        <jsp:useBean id="um" type="ru.javawebinar.topjava.model.MealTo"/>
+
+        <tr class="${um.excess? 'excees' : 'normal'}">
+
+            <td> ${um.dateTime.toLocalDate()} ${um.dateTime.toLocalTime()} </td>
             <td> ${um.description}</td>
             <td> ${um.calories}</td>
         </tr>
